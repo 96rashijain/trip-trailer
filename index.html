@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Surprise Adventure Awaits!</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --deep-plum: #372549;
+            --dusty-mauve: #774c60;
+            --soft-coral: #e8998d;
+            --pale-blush: #f1dabf;
+            --cream: #f8f4e3;
+            --champagne: #f6e8ea;
+            --dark-text: #2b2d42;
+            --medium-text: #4a4e69;
+            --light-text: #8d99ae;
+            --shadow-soft: 0 6px 25px rgba(55, 37, 73, 0.15);
+            --shadow-medium: 0 10px 35px rgba(55, 37, 73, 0.22);
+            --border-radius: 22px;
+            --border-radius-lg: 35px;
+            --accent-gradient: linear-gradient(135deg, var(--dusty-mauve) 0%, var(--soft-coral) 100%);
+            --warm-gradient: linear-gradient(135deg, var(--pale-blush) 0%, var(--cream) 100%);
+            --romantic-gradient: linear-gradient(135deg, var(--soft-coral) 0%, var(--dusty-mauve) 50%, var(--deep-plum) 100%);
+            --card-gradient: linear-gradient(135deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            background: var(--romantic-gradient);
+            min-height: 100vh;
+            color: var(--dark-text);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(232, 153, 141, 0.1) 0%, transparent 55%),
+                radial-gradient(circle at 80% 80%, rgba(119, 76, 96, 0.1) 0%, transparent 55%);
+            animation: patternFloat 25s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes patternFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(15px, -25px) rotate(1.5deg);
+            }
+
+            66% {
+                transform: translate(-20px, 15px) rotate(-1deg);
+            }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 25px;
+        }
+
+        /* Floating decorative hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            background: var(--soft-coral);
+            opacity: 0.2;
+            border-radius: 50%;
+            animation: floatHeart 15s infinite ease-in-out;
+        }
+
+        .floating-heart:nth-child(1) {
+            width: 45px;
+            height: 45px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-heart:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            top: 70%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-heart:nth-child(3) {
+            width: 35px;
+            height: 35px;
+            top: 30%;
+            left: 85%;
+            animation-delay: 4s;
+        }
+
+        .floating-heart:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            top: 80%;
+            left: 15%;
+            animation-delay: 6s;
+        }
+
+        .floating-heart:nth-child(5) {
+            width: 25px;
+            height: 25px;
+            top: 20%;
+            left: 70%;
+            animation-delay: 8s;
+        }
+
+        @keyframes floatHeart {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(20deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--card-gradient);
+            border-radius: var(--border-radius-lg);
+            padding: 70px 50px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 440px;
+            height: 440px;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c515cdbd-32b5-4843-bbfb-bba0a5487f40.png') center/cover;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 320px;
+            height: 320px;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5c3bb0c6-7715-496f-be30-56e9a7c53277.png') center/cover;
+            border-radius: 50%;
+            opacity: 0.06;
+            animation: float 9s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(5deg);
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4em;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4em;
+            color: var(--dusty-mauve);
+            margin-bottom: 35px;
+        }
+
+        .love-message {
+            background: var(--warm-gradient);
+            padding: 45px;
+            border-radius: var(--border-radius);
+            margin: 35px 0;
+            border-left: 5px solid var(--soft-coral);
+            box-shadow: var(--shadow-soft);
+            font-size: 1.1em;
+        }
+
+        .love-message p {
+            margin-bottom: 20px;
+            color: var(--medium-text);
+        }
+
+        .poem-section {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 35px;
+            border-radius: var(--border-radius);
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .poem-section em {
+            font-size: 1.2em;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Trip Dates Box */
+        .trip-dates {
+            background: var(--romantic-gradient);
+            color: white;
+            padding: 35px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trip-dates::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 140px;
+            height: 140px;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1f8bb8a9-eafc-4677-8d9e-05fe88df11d2.png') center/cover;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: rotate 20s linear infinite;
+        }
+
+        .trip-dates h3 {
+            font-size: 1.9em;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .trip-dates .date {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 15px 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Card Sections */
+        .section {
+            background: var(--card-gradient);
+            border-radius: var(--border-radius-lg);
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 180px;
+            background: var(--warm-gradient);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            opacity: 0.25;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6em;
+            color: var(--deep-plum);
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent-gradient);
+            margin: 15px 0;
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 35px 0;
+        }
+
+        .card {
+            background: var(--card-gradient);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--soft-coral);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h4 {
+            color: var(--deep-plum);
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--warm-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Checklist Items */
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .checklist-item {
+            background: var(--card-gradient);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: all 0.4s ease;
+            border-left: 4px solid transparent;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .checklist-item:hover {
+            border-left-color: var(--soft-coral);
+            transform: translateX(5px);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 3px;
+            transform: scale(1.5);
+            accent-color: var(--dusty-mauve);
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            color: var(--medium-text);
+            font-size: 1.05em;
+        }
+
+        .checklist-item label strong {
+            color: var(--deep-plum);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Mystery Hint Box */
+        .mystery-box {
+            background: var(--dusty-mauve);
+            color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin: 35px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .mystery-box::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 240px;
+            height: 240px;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ebe3070c-d300-4630-9b8f-8442357ba0fa.png') center/cover;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: rotate 35s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .mystery-box h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mystery-box p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.15em;
+            line-height: 1.8;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: var(--pale-blush);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            border-left: 6px solid var(--soft-coral);
+            margin: 30px 0;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tip-box::after {
+            content: '💝';
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 2.5em;
+            opacity: 0.5;
+        }
+
+        .tip-box h4 {
+            color: var(--deep-plum);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+        }
+
+        .tip-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-box li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--medium-text);
+            font-size: 1.05em;
+        }
+
+        .tip-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--soft-coral);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        /* Final Message */
+        .final-message {
+            background: var(--romantic-gradient);
+            color: white;
+            padding: 60px;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-message::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 340px;
+            height: 340px;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a39ca820-4071-4961-b594-53b0309cd706.png') center/cover;
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(-50%, -50%);
+            animation: pulse 5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
+
+        .final-message h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-message p {
+            font-size: 1.25em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Decorative Elements */
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 2em;
+            color: var(--soft-coral);
+            opacity: 0.7;
+            letter-spacing: 8px;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Custom button for reveal temptation */
+        .reveal-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow-medium);
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .reveal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .header h1 {
+                font-size: 3.2em;
+            }
+
+            .header {
+                padding: 50px 30px;
+            }
+
+            .section {
+                padding: 40px 30px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 40px 25px;
+            }
+
+            .header h1 {
+                font-size: 2.8em;
+            }
+
+            .header h2 {
+                font-size: 1.9em;
+            }
+
+            .section {
+                padding: 35px 25px;
+            }
+
+            .love-message {
+                padding: 30px;
+            }
+
+            .checklist-item {
+                padding: 20px;
+            }
+
+            .reveal-button {
+                bottom: 20px;
+                right: 20px;
+                font-size: 0.9em;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .love-message {
+                font-size: 1em;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating hearts decoration -->
+    <div class="floating-hearts">
+        <div class="floating-heart"></div>
+        <div class="floating-heart"></div>
+        <div class="floating-heart"></div>
+        <div class="floating-heart"></div>
+        <div class="floating-heart"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Temptation reveal button -->
+    <button class="reveal-button" id="revealButton">No Peeking!</button>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header fade-in">
+            <div class="header-content">
+                <h1>Surprise Adventure</h1>
+                <h2>Preparation Guide for My Amazing Husband</h2>
+
+                <div class="love-message">
+                    <p><strong>My Gudda,</strong></p>
+                    <p>I've been planning something just for us — an adventure wrapped in a little mystery. I know
+                        you'll be tempted to guess (because that's so you), but please don't! The fun is in the
+                        surprise, and I promise it's going to be unforgettable.</p>
+
+                    <p>Every detail has been chosen with your happiness in mind, from the moments of quiet wonder to the
+                        bursts of laughter we'll share. This trip is a celebration of us — our love, our friendship, and
+                        all the little adventures that make life extraordinary.</p>
+
+                    <p>So pack your excitement, trust me completely, and get ready to enjoy every surprise, every laugh,
+                        and every unforgettable moment we'll create together.</p>
+
+                    <p><strong>Forever your Gudiya</strong></p>
+                </div>
+
+                <div class="poem-section">
+                    <em>My dearest Prithvi, my Gudda so fine,<br>
+                        With every step, I'm glad you're mine.<br>
+                        Through highs and lows, in all we do,<br>
+                        My heart beats stronger, all for you.
+
+                        Through miles apart and moments near,<br>
+                        Each hug, each smile has made it clear—<br>
+                        That love like ours is meant to stay,<br>
+                        Through every night and every day.
+
+                        So pack your bags, but don't you guess,<br>
+                        I've planned it all with love, no less.<br>
+                        A trip of wonder, joy, and cheer—<br>
+                        My Gudda, adventure's calling near! ✈️🌄</em>
+                </div>
+
+                <div class="trip-dates">
+                    <h3>Trip Dates</h3>
+                    <div class="date">September 27-30, 2025</div>
+                    <p>4 Days • 3 Nights • Just the two of us</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- What to Expect Section -->
+        <div class="section fade-in">
+            <h2 class="section-title">What to Expect</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h4>Duration & Style</h4>
+                    <p><strong>4 Days, 3 Nights</strong><br>
+                        Mix of outdoor adventure and comfortable stays. Perfect balance of activity and rest with some
+                        early mornings and relaxed afternoons.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌡️</div>
+                    <h4>Climate Expectations</h4>
+                    <p><strong>Variable Weather</strong><br>
+                        Temperatures ranging from 5°C to 25°C. Possibility of wind and occasional precipitation. Layered
+                        clothing will be your best friend.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🥾</div>
+                    <h4>Activity Level</h4>
+                    <p><strong>Moderate Adventure</strong><br>
+                        Some walking and light hiking with photo opportunities everywhere. Nothing too strenuous, just
+                        pure fun.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🍽️</div>
+                    <h4>Dining</h4>
+                    <p><strong>Jain-Friendly Options</strong><br>
+                        I've researched restaurants in advance with backup snacks for remote locations. Local flavors
+                        with dietary accommodations.</p>
+                </div>
+            </div>
+
+            <div class="mystery-box">
+                <h4>Tiny Hints (But Not Too Much!)</h4>
+                <p>Think stunning natural beauty, incredible views, fresh air that fills your lungs with joy, and photo
+                    opportunities that will make our friends and family back home jealous! We'll be experiencing
+                    different ecosystems and landscapes where Mother Nature shows off her very best work!</p>
+            </div>
+        </div>
+
+        <!-- Packing Checklist Section -->
+        <div class="section fade-in">
+            <h2 class="section-title">Complete Packing Checklist</h2>
+
+            <h3
+                style="color: var(--deep-plum); margin: 30px 0 20px 0; font-family: 'Cormorant Garamond', serif; font-size: 1.6em;">
+                Clothing Essentials</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="hiking-boots">
+                    <label for="hiking-boots"><strong>Comfortable walking/hiking shoes</strong> - With good grip for
+                        various terrains</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="casual-shoes">
+                    <label for="casual-shoes"><strong>Casual shoes</strong> - For restaurants and comfortable
+                        walking</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="warm-layers">
+                    <label for="warm-layers"><strong>Warm layers (fleece/wool)</strong> - For cool mornings and
+                        evenings</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="light-jacket">
+                    <label for="light-jacket"><strong>Light windproof jacket</strong> - Essential for outdoor
+                        activities</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="warm-hat">
+                    <label for="warm-hat"><strong>Warm hat and gloves</strong> - Trust me on this one!</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="comfortable-pants">
+                    <label for="comfortable-pants"><strong>Comfortable pants for walking</strong> - Not jeans, something
+                        more flexible</label>
+                </div>
+            </div>
+
+            <h3
+                style="color: var(--deep-plum); margin: 30px 0 20px 0; font-family: 'Cormorant Garamond', serif; font-size: 1.6em;">
+                Essential Gear</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="sunglasses">
+                    <label for="sunglasses"><strong>Good sunglasses</strong> - UV protection is crucial where we're
+                        going</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="sunscreen">
+                    <label for="sunscreen"><strong>High SPF sunscreen (50+)</strong> - The sun will be intense</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="water-bottle">
+                    <label for="water-bottle"><strong>Reusable water bottle</strong> - Staying hydrated will be
+                        important</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="camera">
+                    <label for="camera"><strong>Camera + extra batteries</strong> - You'll want to capture
+                        everything</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="power-bank">
+                    <label for="power-bank"><strong>Portable charger</strong> - For all those photos you'll be
+                        taking</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="small-backpack">
+                    <label for="small-backpack"><strong>Small daypack</strong> - For carrying water, snacks,
+                        layers</label>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>Special Packing Tips from Your Wife</h4>
+                <ul>
+                    <li><strong>Layer like an onion:</strong> You'll be adding and removing clothes throughout each day
+                    </li>
+                    <li><strong>Comfort over style:</strong> Though you'll look handsome in anything, prioritize comfort
+                        for walking</li>
+                    <li><strong>Bring power bank:</strong> You're going to want to take SO many pictures</li>
+                    <li><strong>Pack a sense of adventure:</strong> Be ready for some "wow" moments</li>
+                    <li><strong>Trust your wife:</strong> I've planned everything perfectly, so just relax and enjoy!
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Preparation Tips Section -->
+        <div class="section fade-in">
+            <h2 class="section-title">Final Preparation Tips</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h4>Digital Preparation</h4>
+                    <p>Download weather apps, camera apps, offline maps, and music for our road trip moments. Fully
+                        charge all devices and pack charging cables.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💪</div>
+                    <h4>Physical Preparation</h4>
+                    <p>Some moderate walking involved but nothing too strenuous. Stay hydrated, get good sleep before
+                        the trip, and come with an open mind.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📷</div>
+                    <h4>Photography Prep</h4>
+                    <p>Clear space on your phone for photos, bring backup camera if you have one, pack lens cleaning
+                        cloth, and extra memory cards.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🧘‍♂️</div>
+                    <h4>Mental Prep</h4>
+                    <p>Leave work stress behind, focus on us and making memories. Be ready for surprises and incredible
+                        "wow" moments.</p>
+                </div>
+            </div>
+
+            <div class="mystery-box">
+                <h4>One More Mysterious Hint</h4>
+                <p>Think about places that make you feel small in the best way possible - where nature's grandeur puts
+                    everything into perspective, where the views are so spectacular they take your breath away, and
+                    where you'll understand why people travel thousands of miles just to stand in awe. Adventure awaits
+                    us in places where the sky feels closer!</p>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message fade-in">
+            <h3>Until the Big Reveal...</h3>
+            <p>Pack with love, prepare with excitement, and get ready to fall in love with our next adventure together.
+                I can hardly contain my excitement to share this with you!</p>
+
+            <div class="divider">~ ~ ~</div>
+
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.5em; font-weight: 600;">
+                Forever yours, always yours,<br>Your Gudiya
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced animations for all fade-in elements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make all fade-in elements visible after page load
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            // Smooth scroll to sections when clicking navigation items
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Progress bar functionality
+            window.addEventListener('scroll', function () {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('progressBar').style.width = scrolled + '%';
+            });
+
+            // Temptation reveal button functionality
+            const revealButton = document.getElementById('revealButton');
+            let clickCount = 0;
+            const messages = [
+                "No peeking, my Gudda!",
+                "The surprise is worth the wait!",
+                "I promise it'll be amazing!",
+                "Just a little more patience!",
+                "I love your curious nature!",
+                "You'll find out soon!",
+                "Trust me, it's worth it!"
+            ];
+
+            revealButton.addEventListener('click', function () {
+                // Create a floating message
+                const message = document.createElement('div');
+                message.textContent = messages[clickCount % messages.length];
+                message.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(232, 153, 141, 0.95);
+                    color: white;
+                    padding: 20px 30px;
+                    border-radius: 25px;
+                    font-size: 1.3em;
+                    font-family: 'Dancing Script', cursive;
+                    font-weight: 600;
+                    z-index: 9999;
+                    box-shadow: var(--shadow-medium);
+                    animation: messagePopIn 0.5s ease-out, messagePopOut 0.5s ease-out 2.5s forwards;
+                `;
+
+                document.body.appendChild(message);
+                clickCount++;
+
+                // Animation for the button
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+
+                // Remove the message after animation
+                setTimeout(() => {
+                    message.remove();
+                }, 3000);
+            });
+
+            // Enhanced checklist functionality
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const item = this.parentElement;
+                    if (this.checked) {
+                        item.style.background = 'linear-gradient(135deg, var(--soft-coral), var(--dusty-mauve))';
+                        item.style.color = 'white';
+                        item.style.transform = 'translateX(10px)';
+                    } else {
+                        item.style.background = 'var(--card-gradient)';
+                        item.style.color = 'var(--medium-text)';
+                        item.style.transform = 'translateX(0)';
+                    }
+                });
+            });
+
+            // Add subtle hover effects for cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-10px)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    if (!this.classList.contains('checked')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            // Add keyframe animations for the message popup
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes messagePopIn {
+                    from {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+                
+                @keyframes messagePopOut {
+                    from {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    to {
+                        opacity: 0;
+                        transform: translate(-50%, -70%) scale(0.8);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+
+</html>
